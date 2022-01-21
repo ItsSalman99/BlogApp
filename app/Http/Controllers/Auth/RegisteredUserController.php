@@ -10,6 +10,7 @@ use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Notification;
 use Illuminate\Validation\Rules;
 
 class RegisteredUserController extends Controller
@@ -50,7 +51,7 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        $user->notify(new WelcomeUser);
+        Notification::send($user,new WelcomeUser);
 
         return redirect(RouteServiceProvider::HOME);
     }
