@@ -16,6 +16,14 @@
     
     <nav class="flex justify-between p-4">
         <a href="/">Blog</a>
+        @auth
+            <ul class="flex justify-evenly">
+                <div>
+                    <a href="/dashboard" class="px-4 py-2 bg-gray-800 text-white rounded-lg">{{auth()->user()->name}}</a>
+                </div>
+            </ul>
+        @endauth
+        @guest
             <ul class="flex justify-evenly">
                 <div>
                     <a href="/login" class="px-4">Login</a>
@@ -23,7 +31,8 @@
                 <div>
                     <a href="/register" class="px-4">Sign Up</a>
                 </div>
-            </ul>
+            </ul>    
+        @endguest
     </nav>
 
     @yield('content')
