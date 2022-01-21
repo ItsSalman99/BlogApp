@@ -30,7 +30,7 @@ class WelcomeUser extends Notification
      */
     public function via($notifiable)
     {
-        return ['mail'];
+        return ['database','mail'];
     }
 
     /**
@@ -56,7 +56,7 @@ class WelcomeUser extends Notification
     public function toArray($notifiable)
     {
         return [
-            //
+            'data' => 'Welcome to the Blog'
         ];
     }
 }
