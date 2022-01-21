@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\PostController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,6 +18,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [PostController::class, 'index']);
 Route::post('/posts', [PostController::class, 'search'])->name('search');
 
+Route::get('/readNotifications', function()
+{
+    Auth::user()->unreadNotifications->markAsRead();
+
+    return redirect()->back();
+});
 
 Route::get('/dashboard', function () {
     return view('dashboard');
