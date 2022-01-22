@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
@@ -30,6 +31,20 @@ class PostController extends Controller
 
         return view('posts.index')->with(['posts'=> $posts]);
 
+    }
+
+    public function create()
+    {
+        $this->authorize('create-post');
+
+        return view('posts.create');
+    }
+
+    public function UserPosts()
+    {
+        $posts = Post::where('user_id', Auth::user()->id)->get();
+        
+        return view('dashboard')->with(['posts' => $posts]);
     }
 
 }
