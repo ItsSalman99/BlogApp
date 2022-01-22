@@ -51,6 +51,12 @@
                     {{ __('Log in') }}
                 </x-button>
             </div>
+            <div class="mt-4">
+                <a href="{{ url('auth/google') }}" class="flex justify-center alignItems bg-gray-800 text-white text-center hover:bg-gray-700 w-full p-2 rounded-lg">
+                    <img src="https://img.icons8.com/plasticine/100/000000/google-logo.png" width="8%"/>
+                    <span class="font-bold px-2">Log in with google</span>
+                </a>
+            </div>
         </form>
     </x-auth-card>
 </x-guest-layout>
