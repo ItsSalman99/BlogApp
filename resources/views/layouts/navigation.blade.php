@@ -20,6 +20,18 @@
 
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ml-6">
+                @can('create', \App\Models\Post::class)
+                <div class="px-2">
+                    <a href="/create" class="flex justify-between bg-gray-800 rounded-lg p-2 text-white text-sm font-bold">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z" clip-rule="evenodd" />
+                        </svg>
+                        <p class="text-sm">
+                            Create a post
+                        </p>
+                    </a>
+                </div>
+                @endcan
                 {{-- Notification Dropdown --}}
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
@@ -72,7 +84,7 @@
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
                         <button class="flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
-                            <div>{{ Auth::user()->name }}</div>
+                            <div>{{ Auth::user()->name }} ({{Auth::user()->admin == 1 ? 'admin' : 'author'}})</div>
 
                             <div class="ml-1">
                                 <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
