@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\GoogleSocialiteController;
 use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -24,6 +25,9 @@ Route::get('/readNotifications', function()
 
     return redirect()->back();
 });
+
+Route::get('auth/google', [GoogleSocialiteController::class, 'redirectToGoogle']);
+Route::get('auth/google/callback', [GoogleSocialiteController::class, 'handleGoogleCallback']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
