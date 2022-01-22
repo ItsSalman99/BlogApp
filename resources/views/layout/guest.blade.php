@@ -7,10 +7,17 @@
     <title>Blog @yield('title')</title>
 
     <!-- Styles -->
-    <link rel="stylesheet" href="{{ secure_asset('css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
     <!-- Scripts -->
-    <script src="{{ secure_asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/app.js') }}" defer></script>
+
+    @production
+            <!-- Styles -->
+            <link rel="stylesheet" href="{{ secure_asset('css/app.css') }}">
+            <!-- Scripts -->
+            <script src="{{ secure_asset('js/app.js') }}" defer></script>
+    @endproduction
 </head>
 <body>
     
