@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [PostController::class, 'index']);
 Route::post('/posts', [PostController::class, 'search'])->name('search');
+Route::get('/create', [PostController::class, 'create'])->middleware('isAdmin');
 
 Route::get('/readNotifications', function()
 {
@@ -29,8 +30,6 @@ Route::get('/readNotifications', function()
 Route::get('auth/google', [GoogleSocialiteController::class, 'redirectToGoogle']);
 Route::get('auth/google/callback', [GoogleSocialiteController::class, 'handleGoogleCallback']);
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+Route::get('/dashboard', [PostController::class,'UserPosts'])->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
